@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h2>Trouver des développeurs dans ta ville</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      <div class="form-inline">
+        <input placeholder="Location Name" class="form-control input-lg input" #place (keyup.enter)="search(place.value); place.value='';" />
+        <button class="btn btn-primary btn-lg" (click)="search(place.value); place.value='';">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <p class="text-center" style="padding: 1em; color:red;" *ngIf="error_text">{{ error_text }}</p>
+    <div class="col-md-12">
+      <div class="user col-md-2 text-center" *ngFor="let user of results" (click)="getDetails(user.login)">
+        <div class="img_container">
+          <img src="{{user.avatar_url}}" class="img-circle" width="100" height="100">
+        </div>
+        <div class="details_container">
+          <a href="{{user.html_url}}" target="_blank" class="login_name">{{ user.login }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
